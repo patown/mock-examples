@@ -10,10 +10,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.mockito.InOrder;
+import org.mockito.Mockito;
 
-import static org.mockito.Mockito.*;
 import static org.assertj.core.api.Assertions.*;
-
+import static org.mockito.Mockito.*;
 public class ListTest {
 	  @Rule
 	     public ExpectedException thrown= ExpectedException.none();
@@ -97,4 +97,18 @@ public class ListTest {
 
         verify(list,atMost(3)).add(3);
     }
+    
+	@Test
+	public void T07_MatcherArgument() {
+		List<String> list = mock(List.class);
+
+		//given
+		when(list.get(Mockito.anyInt())).thenReturn("6666");
+
+		//then
+		assertThat(list.get(0)).isEqualTo("6666");
+		assertThat(list.get(6666)).isEqualTo("6666");
+	}
+
+    
 }
