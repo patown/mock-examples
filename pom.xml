@@ -14,7 +14,8 @@
 
     <modules>
         <module>mockito</module>       
-        <module>powermock</module>                  
+        <module>powermock</module>  
+        <module>springtestdbunit</module>     
     </modules>
 
     <properties>
